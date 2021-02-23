@@ -1,0 +1,65 @@
+﻿@page
+@model Portofolio.Pages.ListaProjekteve.IndexModel
+
+<br />
+
+<div class="container row p-0 m-0">
+    <div class="col-9">
+        <h2 class="text-info">
+            Lista e Projekteve
+        </h2>
+    </div>
+    <div class="col-3">
+        <a asp-page="Krijo" class="btn btn-info form-control text-white"> Krijo Projekt te Ri</a>
+    </div>
+
+    <div class="col-12 border p-3 mt-3">
+        <form method="post">
+            @if(Model.Projects.Count() > 0)
+            {
+                <table class="table table-striped border">
+                    <tr class="table-secondary">
+                        <th>
+                            <label asp-for="Projects.FirstOrDefault().Autori"></label>
+                        </th>
+                        <th>
+                            @*@Html.DisplayNameFor(m=>m.Projects.FirstOrDefault().EmriProjektit)*@
+                            <label asp-for="Projects.FirstOrDefault().EmriProjektit"></label>
+                        </th>
+                        <th>
+                            <label asp-for="Projects.FirstOrDefault().Pershkrimi"></label>
+                        </th>
+                        <th>
+                            <label asp-for="Projects.FirstOrDefault().URL"></label>  @*Ketu kam perduar Tag Helpers*@
+                        </th>
+                    </tr>
+                    @foreach(var item in Model.Projects)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(m=>item.Autori)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m=>item.EmriProjektit)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m=>item.Pershkrimi)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m=>item.URL) @*Ne kete Loop i kam shfaqur atributet duke perdorur HTML Tags - HTML Helper*@
+                            </td>
+                            <td>
+                                <button asp-page-handler="Delete" asp-route-id="@item.Id" onclick="return confirm('A jeni i sigurt qe doni ta fshini?')" class="btn btn-danger btn-sm">Fshij </button>  
+                                <a asp-page="Ndrysho" asp-route-id="@item.Id" class="btn btn-success btn-sm text-white">Ndrysho</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+            else
+            {
+                <p>Momentalisht nuk gjindet asnje projekt</p>
+            }
+        </form>
+    </div>
+}

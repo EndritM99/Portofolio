@@ -1,0 +1,65 @@
+﻿@page
+@model Portofolio.Pages.ListaProjekteve.NdryshoModel
+
+<br />
+
+<h2 class="text-info">Ndrysho Projektin</h2>
+
+<div class="border container" style="padding: 30px;">
+    <form method="post">
+        <input type="hidden" asp-for="Projekti.Id"  />
+        <div class="text-danger" asp-validation-summary="ModelOnly">  </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Projekti.Autori"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Projekti.Autori" class="form-control" />
+            </div>
+            <span asp-validation-for="Projekti.Autori" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Projekti.EmriProjektit">Emri Projektit</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Projekti.EmriProjektit" class="form-control" />
+            </div>
+            <span asp-validation-for="Projekti.EmriProjektit" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Projekti.Pershkrimi"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Projekti.Pershkrimi" class="form-control" />
+            </div>
+            <span asp-validation-for="Projekti.Pershkrimi" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Projekti.URL"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Projekti.URL" class="form-control" />
+            </div>
+            <span asp-validation-for="Projekti.URL" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3 offset-3">
+                <input type="submit" value="Ndrysho" class="btn btn-primary form-control" />
+            </div>
+            <div class="col-3">
+                <a asp-page="Index" class="btn btn-success form-control">Kthehu te Lista</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
